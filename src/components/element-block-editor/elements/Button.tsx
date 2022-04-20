@@ -7,9 +7,20 @@ type ButtonProps = {
 };
 
 export const Button: EditorComponent<ButtonProps> = ({ btnText }) => {
+  const {
+    connectors: { connect, drag },
+    isClicked,
+    actions: { setProp },
+  } = useNode((state) => ({
+    isClicked: state.events.selected,
+  }));
+
   return (
-    <div>
-      <button className="bg-red-200 p-2">{btnText}</button>
+    <div className="flex">
+      <div ref={(dom) => (dom ? connect(drag(dom)) : null)}>
+        <button className="bg-red-200 p-2">{btnText}</button>
+      </div>
+      {isClicked ? <ButtonSettings /> : null}
     </div>
   );
 };
@@ -19,10 +30,5 @@ export const ButtonDefaultProps = {
 };
 
 Button.craft = {
-  props: ButtonDefaultProps,
-  displayName: "LDK",
-  defaultProps: ButtonDefaultProps,
-  related: {
-    settings: ButtonSettings,
-  },
+  displayName: "Button test",
 };

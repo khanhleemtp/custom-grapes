@@ -28,9 +28,9 @@ export const ButtonSettings = () => {
 
   const btnText = useWatch({ control, name: "btnText" });
 
-  // useEffect(() => {
-  //   setProp(btnText);
-  // }, []);
+  useEffect(() => {
+    setProp(btnText);
+  }, []);
 
   return (
     <form onSubmit={onSubmit} className="bg-green-400">

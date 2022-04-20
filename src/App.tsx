@@ -1,19 +1,20 @@
 import { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import BaseBuilder from "./components/element-block-editor/element-block-editor";
+// import BaseBuilder from "./components/element-block-editor/element-block-editor";
 import Column from "./components/others/Column";
 import { ButtonSettings } from "./components/element-block-editor/elements/ButtonSettings";
+import BaseBuilder from "./test/BaseBuilder";
+import Sidebar from "./components/sidebar/sidebar.component";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App min-h-screen w-full bg-red-100">
-      Hello LD
-      <div className="flex min-h-screen w-full">
+    <div className="overflow-hidden">
+      <Sidebar>
         <BaseBuilder />
-      </div>
+      </Sidebar>
     </div>
   );
 }

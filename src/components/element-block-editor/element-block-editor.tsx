@@ -1,6 +1,12 @@
-import { Editor, Frame, Element, UserComponent } from "@craftjs/core";
+import {
+  Editor,
+  Frame,
+  Element,
+  UserComponent,
+  useEditor,
+  Canvas,
+} from "@craftjs/core";
 import { Button } from "./elements";
-import { ButtonSettings } from "./elements";
 
 // Editable area starts here
 type Props = {};
@@ -12,9 +18,9 @@ export default function BaseBuilder({}: Props) {
       }}
     >
       <Frame>
-        <Button btnText="LDK" />
+        <Button btnText="Btn t" />
       </Frame>
-      {/* <ButtonSettings /> */}
+      {/* <Toolbox /> */}
     </Editor>
   );
 }
