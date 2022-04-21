@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import TextComponent from "./TextComponent";
 import { Editor, Frame, Canvas, Element } from "@craftjs/core";
 import Toolbox from "./Toolbox";

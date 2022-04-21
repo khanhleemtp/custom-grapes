@@ -1,5 +1,4 @@
 import { useNode, UserComponent } from "@craftjs/core";
-import MyDialog from "./Modal";
 
 type TextProps = {
   text: string;
@@ -30,6 +29,10 @@ const TextComponent: UserComponent<TextProps> = ({ text }) => {
       )} */}
     </div>
   );
+};
+
+TextComponent.craft = {
+  displayName: "TextComponent",
 };
 
 export default TextComponent;

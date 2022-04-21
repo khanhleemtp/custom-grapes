@@ -1,13 +1,47 @@
-import { useEditor, Element } from "@craftjs/core";
+import { useEditor, Element, Editor, Frame, NodeData } from "@craftjs/core";
 import Container from "./Container";
 import TextComponent from "./TextComponent";
-
 import { useEffect } from "react";
+import { generateHtml } from "../utils/generateHTML";
+
+const craftJsNodes = {
+  ROOT: {
+    type: { resolvedName: "TextComponent" },
+    nodes: [],
+    props: {},
+    custom: {},
+    hidden: false,
+    parent: "",
+    isCanvas: false,
+    displayName: "TextComponent",
+    linkedNodes: {},
+  },
+};
+
+type Root = {
+  ROOT: any;
+};
+
+let d = {
+  ROOT: {
+    custom: {},
+    displayName: "div",
+    hidden: false,
+    parent: "",
+    isCanvas: true,
+    linkedNodes: {},
+    nodes: ["rwV039IXwZ"],
+    props: { className: "bg-red-200" },
+    type: "div",
+  },
+};
 
 const Toolbox = () => {
-  const { connectors } = useEditor();
-
-  useEffect(() => {});
+  const { actions, query, enabled, connectors } = useEditor((state) => ({
+    enabled: state.options.enabled,
+  }));
+  // console.log(JSON.parse(query.serialize()).ROOT)
+  console.log(generateHtml(d));
 
   return (
     <div style={{ padding: "2rem" }}>
@@ -29,6 +63,7 @@ const Toolbox = () => {
         >
           Container
         </button>
+        {/* <Preview data={query.serialize()} /> */}
       </div>
     </div>
   );
