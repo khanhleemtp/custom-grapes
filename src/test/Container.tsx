@@ -1,9 +1,15 @@
-import { UserComponent, useNode } from "@craftjs/core";
+import { UserComponent, useNode, useEditor } from "@craftjs/core";
 
 const Container: UserComponent = ({ children }) => {
   const {
     connectors: { drag, connect },
+    id,
   } = useNode();
+
+  const {
+    actions: { add },
+    query: { createNode, node },
+  } = useEditor();
 
   return (
     <div

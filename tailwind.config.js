@@ -7,6 +7,7 @@ module.exports = {
   },
   plugins: [
     require("tailwind-scrollbar"),
+    require("@tailwindcss/forms"),
     plugin(function ({ addUtilities }) {
       const newUtilities = {
         " .no-scrollbar::-webkit-scrollbar": {
