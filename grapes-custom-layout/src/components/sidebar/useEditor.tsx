@@ -173,36 +173,35 @@ const useEditor = () => {
                   keyWidth: "flex-basis",
                 },
               },
-              // {
-              //   id: "switch-view",
-              //   el: switcher.current,
-              //   buttons: [
-              //     {
-              //       id: cmdToggleBlkm,
-              //       command: cmdToggleBlkm,
-              //       context: viewContext,
-              //       label: "Elements",
-              //       togglable: false,
-              //       active: 1,
-              //     },
-              //     {
-              //       id: cmdToggleStym,
-              //       command: cmdToggleStym,
-              //       context: viewContext,
-              //       label: "Styles",
-              //       togglable: false,
-              //     },
-              //     {
-              //       id: cmdToggleLym,
-              //       command: cmdToggleLym,
-              //       context: viewContext,
-              //       label: "Layers",
-              //       togglable: false,
-              //     },
-              //   ],
-              // },
-              /* */
-              /*  , */
+              {
+                id: "switch-view",
+                el: switcher.current,
+                buttons: [
+                  {
+                    id: cmdToggleBlkm,
+                    command: cmdToggleBlkm,
+                    context: viewContext,
+                    label: "Elements",
+                    togglable: false,
+                    active: 1,
+                  },
+                  {
+                    id: cmdToggleStym,
+                    command: cmdToggleStym,
+                    context: viewContext,
+                    label: "Styles",
+                    togglable: false,
+                  },
+                  {
+                    id: cmdToggleLym,
+                    command: cmdToggleLym,
+                    context: viewContext,
+                    label: "Layers",
+                    togglable: false,
+                  },
+                ],
+              },
+            
               {
                 id: "top-left-panel",
                 el: pnltl.current,

@@ -19,6 +19,7 @@ export const PanelHeading = styled("div")`
   position: relative;
   left: -64px;
   background: rgba(255, 255, 255, 0.53);
+  
   &.gjs-pn-panel {
     background-color: transparent;
     padding: 0;
@@ -43,10 +44,12 @@ export const PanelHeading = styled("div")`
       height: 100%;
       padding: 0;
       &.gjs-pn-active {
-        box-shadow: none;
+        /* box-shadow: none;
         box-shadow: 0 0 1px 1px currentColor;
-        background-color: rgba(255, 255, 255, 0.76);
-      }
+        background-color: rgba(255, 255, 255, 0.76); */
+        color: red;
+      
+        }
     }
   }
   &:hover {
@@ -152,10 +155,11 @@ export const EditorGrid = styled("div")`
   display: flex;
   width: 100%;
   height: 100%;
-  padding: 20px;
+  /* padding-top:20px ; */
+  /* padding: 20px; */
   /* grid-template-columns: minmax(300px, 300px) auto; */
   /* grid-template-rows: 1fr; */
-  background-color: red;
+  /* background-color: red; */
   overflow: hidden;
   width: 100%;
 `;
@@ -184,7 +188,7 @@ export const EditorMain = styled("div")`
 `;
 export const EditorCanvas = styled("section")`
   display: block;
-  overflow: scroll;
+  overflow: auto;
   scrollbar-width: thin;
 
   /* background: white; */

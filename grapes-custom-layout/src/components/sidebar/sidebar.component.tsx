@@ -20,6 +20,7 @@ import {
 } from "../page-builder/styled";
 import { useRefEditor } from "./useEditor";
 
+
 type Props = {};
 
 const Sidebar: React.FC<Props> = ({ children }) => {
