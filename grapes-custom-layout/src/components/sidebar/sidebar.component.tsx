@@ -1,14 +1,31 @@
+import clsx from "clsx";
 import { ChevronLeftIcon } from "@heroicons/react/outline";
 import { ChartPieIcon } from "@heroicons/react/solid";
 import { useState } from "react";
-import clsx from "clsx";
 import Navbar from "../header/navbar.component";
 import SettingTabs from "../tab/tab-group.component";
+
+/* impliment grapesjs */
+import "../page-builder/gjs.scss";
+
+import {
+  EditorGrid,
+  PanelSection,
+  EditorAside,
+  AsideTop,
+  PanelHeading,
+  PanelContent,
+  EditorMain,
+  EditorCanvas,
+} from "../page-builder/styled";
+import { useRefEditor } from "./useEditor";
 
 type Props = {};
 
 const Sidebar: React.FC<Props> = ({ children }) => {
   const [isShowing, setIsShowing] = useState(false);
+  // console.log(useRefEditor());
+  const { canvas } = useRefEditor();
 
   return (
     <div
@@ -53,9 +70,19 @@ const Sidebar: React.FC<Props> = ({ children }) => {
         <Navbar>
           <div className="h-full bg-gray-100 p-2">
             <div className="h-[calc(100vh-5.2rem)]">
-              <div className="h-full bg-white">{children}</div>
+              <div className="h-full bg-white">
+                <EditorGrid id="editor-grid">
+                  <EditorMain id="main_panel">
+                    {/* Main canvas */}
+                    <EditorCanvas id="editor-canvas" ref={canvas}>
+                      {() => null}
+                    </EditorCanvas>
+                  </EditorMain>
+                </EditorGrid>
+              </div>
             </div>
           </div>
+          {children}
         </Navbar>
       </div>
     </div>

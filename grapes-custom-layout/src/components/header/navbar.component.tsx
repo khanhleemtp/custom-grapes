@@ -1,9 +1,14 @@
 import React from "react";
+import { PanelHeading } from "../page-builder/styled";
+import { useRefEditor } from "../sidebar/useEditor";
 import HeroIcons from "./hero-icons.component";
 
 type Props = {};
 
 const Navbar: React.FC<Props> = ({ children }) => {
+  const { pnltl } = useRefEditor();
+  // console.log(useRefEditor());
+  console.log(pnltl);
   return (
     <div className="divide-y divide-gray-400 bg-white">
       <div className="h-16 border p-2 w-full">
@@ -18,10 +23,16 @@ const Navbar: React.FC<Props> = ({ children }) => {
             <HeroIcons icon="tablet" />
             <HeroIcons icon="mobile" />
           </div>
-          <div className="flex space-x-2 h-full">
-            <HeroIcons icon="history" />
+          <div className="h-full">
+            <PanelHeading ref={pnltl}></PanelHeading>
+
+            {/* <PanelHeading ref={pnltl}></PanelHeading>
+            <PanelHeading ref={pnltl}></PanelHeading> */}
+
+            {/* <div ref={pnltl}></div> */}
+            {/* <HeroIcons icon="history" />
             <HeroIcons text="Preview" />
-            <HeroIcons text="Publish" />
+            <HeroIcons text="Publish" /> */}
           </div>
         </div>
       </div>

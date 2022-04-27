@@ -1,3 +1,4 @@
+// @ts-nocheck
 import grapesjs from "grapesjs";
 import "./gjs.scss";
 import { useEffect, useState, useRef } from "react";

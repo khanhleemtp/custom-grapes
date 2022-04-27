@@ -1,34 +1,47 @@
+// @ts-nocheck
 import styled from "styled-components";
 
 const maxHeight = "calc(100vh - 90px)";
 
 export const PanelHeading = styled("div")`
   display: flex;
-  overflow-x: auto;
+  /* overflow-x: auto;
   overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory; */
   scrollbar-width: none;
   justify-content: space-between;
   color: #060e4f;
   /* padding: 4px; */
-  max-height: 45px;
-  height: 45px;
+  /* max-height: 45px;
+  height: 45px; */
   width: 100%;
+  height: 100%;
   position: relative;
-  border-bottom: 1px solid rgba(234, 234, 234, 0.53);
+  left: -64px;
   background: rgba(255, 255, 255, 0.53);
-  .gjs-pn-panel {
+  &.gjs-pn-panel {
     background-color: transparent;
+    padding: 0;
   }
   .gjs-pn-buttons {
-    justify-content: space-between;
-    gap: 8px;
+    /* flex-grow: 1; */
+    align-items: flex-start;
+    /* justify-content: space-between; */
+    /* position: absolute; */
+    /* left: 0;
+    right: 0;
+    bottom: 0;
+    right: 0; */
+    /* flex-grow: 1; */
+    /* gap: 8px; */
 
-    width: 100%;
-    padding-left: 8px;
-    padding-right: 8px;
+    /* padding-left: 8px;
+    padding-right: 8px; */
     .gjs-pn-btn {
       font-size: inherit;
+      width: 100%;
+      height: 100%;
+      padding: 0;
       &.gjs-pn-active {
         box-shadow: none;
         box-shadow: 0 0 1px 1px currentColor;
@@ -46,6 +59,7 @@ export const AsideTop = styled("div")`
 
   .gjs-pn-buttons {
     justify-content: space-between;
+
     gap: 8px;
     width: 100%;
     padding-left: 8px;
@@ -136,10 +150,12 @@ export const EditorAside = styled("div")`
 `;
 export const EditorGrid = styled("div")`
   display: flex;
-  min-height: calc(100vh - 45px);
-  max-height: calc(100vh - 45px);
+  width: 100%;
+  height: 100%;
+  padding: 20px;
   /* grid-template-columns: minmax(300px, 300px) auto; */
   /* grid-template-rows: 1fr; */
+  background-color: red;
   overflow: hidden;
   width: 100%;
 `;
