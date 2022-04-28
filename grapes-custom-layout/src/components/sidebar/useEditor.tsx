@@ -28,7 +28,7 @@ import {
   cmdToggleLym,
   cmdToggleStym,
   cmdOutlineComp,
-} from "../page-builder/consts";
+} from "../page-builder/gjs-preset-funnel/helpers/consts";
 import "../page-builder/gjs-preset-funnel";
 import HeroIcons from "../header/hero-icons.component";
 import { renderToString } from "react-dom/server";
@@ -95,23 +95,23 @@ const useEditor = () => {
             appendTo: stylm.current,
           },
           deviceManager: {
-            appendTo: pnltc.current,
-            devices: [
-              {
-                name: "Desktop",
-                width: "", // default size
-              },
-              {
-                name: "Tablet",
-                width: "500px", // this value will be used on canvas width
-                widthMedia: "768px", // this value will be used in CSS @media
-              },
-              {
-                name: "Mobile portrait",
-                width: "320px", // this value will be used on canvas width
-                widthMedia: "500px", // this value will be used in CSS @media
-              },
-            ],
+            // appendTo: pnltc.current,
+            // devices: [
+            //   {
+            //     name: "Desktop",
+            //     width: "", // default size
+            //   },
+            //   {
+            //     name: "Tablet",
+            //     width: "500px", // this value will be used on canvas width
+            //     widthMedia: "768px", // this value will be used in CSS @media
+            //   },
+            //   {
+            //     name: "Mobile portrait",
+            //     width: "320px", // this value will be used on canvas width
+            //     widthMedia: "500px", // this value will be used in CSS @media
+            //   },
+            // ],
           },
           panels: {
             defaults: [
@@ -119,28 +119,28 @@ const useEditor = () => {
                 id: "bottom-left-panel",
                 el: pnlbl.current,
                 buttons: [
-                  {
-                    id: cmdUndo,
-                    context: cmdUndo,
-                    command: cmdUndo,
-                    label: renderToString(<HeroIcons icon="undo" />),
-                    // class: "text-gray-400",
-                    // label: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M479.9 394.9c0-19.6 4.2-97.1-56.8-158.7-40.4-40.7-91.9-61.7-163.4-65.5-2.1-.1-3.8-1.9-3.8-4V84c0-3.2-3.5-5.1-6.2-3.4L33.8 222.8c-2.4 1.6-2.4 5.1 0 6.7l215.9 142.2c2.7 1.8 6.2-.1 6.2-3.4v-81.6c0-2.3 1.9-4.1 4.2-4 44.1 1.7 69.5 10.9 97.1 23.2 36.1 16.2 72.9 50.9 94.5 83.5 13.1 19.9 19.2 33.9 21.4 39.7.7 1.7 2.3 2.8 4.1 2.8h2.9c-.1-11.7-.2-26.7-.2-37z"></path></svg>`,
-                  },
-                  {
-                    id: cmdRedo,
-                    context: cmdRedo,
-                    command: cmdRedo,
-                    label: renderToString(
-                      <HeroIcons
-                        icon="redo"
-                        // disabled={editor?.UndoManager?.hasRedo || true}
-                      />
-                    ),
+                  // {
+                  //   id: cmdUndo,
+                  //   context: cmdUndo,
+                  //   command: cmdUndo,
+                  //   label: renderToString(<HeroIcons icon="undo" />),
+                  //   // class: "text-gray-400",
+                  //   // label: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M479.9 394.9c0-19.6 4.2-97.1-56.8-158.7-40.4-40.7-91.9-61.7-163.4-65.5-2.1-.1-3.8-1.9-3.8-4V84c0-3.2-3.5-5.1-6.2-3.4L33.8 222.8c-2.4 1.6-2.4 5.1 0 6.7l215.9 142.2c2.7 1.8 6.2-.1 6.2-3.4v-81.6c0-2.3 1.9-4.1 4.2-4 44.1 1.7 69.5 10.9 97.1 23.2 36.1 16.2 72.9 50.9 94.5 83.5 13.1 19.9 19.2 33.9 21.4 39.7.7 1.7 2.3 2.8 4.1 2.8h2.9c-.1-11.7-.2-26.7-.2-37z"></path></svg>`,
+                  // },
+                  // {
+                  //   id: cmdRedo,
+                  //   context: cmdRedo,
+                  //   command: cmdRedo,
+                  //   label: renderToString(
+                  //     <HeroIcons
+                  //       icon="redo"
+                  //       // disabled={editor?.UndoManager?.hasRedo || true}
+                  //     />
+                  //   ),
 
-                    // class: "text-gray-400",
-                    // label: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M9 3.881v-3.881l6 6-6 6v-3.966c-6.98-0.164-6.681 4.747-4.904 7.966-4.386-4.741-3.455-12.337 4.904-12.119z"></path></svg>`,
-                  },
+                  //   // class: "text-gray-400",
+                  //   // label: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M9 3.881v-3.881l6 6-6 6v-3.966c-6.98-0.164-6.681 4.747-4.904 7.966-4.386-4.741-3.455-12.337 4.904-12.119z"></path></svg>`,
+                  // },
                   // {
                   //   id: cmdHistory,
                   //   context: viewContext,
@@ -210,75 +210,67 @@ const useEditor = () => {
                 ],
               },
 
-              {
-                id: "top-left-panel",
-                el: pnltl.current,
-                buttons: [
-                  // {
-                  //   id: cmdOutlineComp,
-                  //   command: cmdOutlineComp,
-                  //   context: cmdOutlineComp,
-                  //   active: 1,
-                  //   togglable: true,
-                  //   label: "",
-                  //   attributes: {
-                  //     class: "icon icon-sw",
-                  //   },
-                  // },
-                  {
-                    id: cmdFullscreen,
-                    command: cmdFullscreen,
-                    context: cmdFullscreen,
-                    togglable: true,
-                    label: renderToString(<HeroIcons icon="fullscreen" />),
-                  },
-                  {
-                    id: cmdSettings,
-                    command: cmdSettings,
-                    context: cmdSettings,
-                    togglable: true,
-                    label: renderToString(<HeroIcons text="Preview" />),
-                  },
-                ],
-              },
-              {
-                id: "top-center-panel",
-                el: pnltc.current,
-                buttons: [
-                  {
-                    label: "",
-                    id: cmdDeviceDesktop,
-                    command: cmdDeviceDesktop,
-                    context: cmdDeviceDesktop,
-                    active: 1,
-                    label: renderToString(<HeroIcons icon="pc" />),
-                  },
-                  {
-                    label: ``,
-                    id: cmdDeviceTablet,
-                    command: cmdDeviceTablet,
-                    context: cmdDeviceTablet,
-                    label: renderToString(<HeroIcons icon="tablet" />),
+              // {
+              //   id: "top-left-panel",
+              //   el: pnltl.current,
+              //   buttons: [
+              //     // {
+              //     //   id: cmdOutlineComp,
+              //     //   command: cmdOutlineComp,
+              //     //   context: cmdOutlineComp,
+              //     //   active: 1,
+              //     //   togglable: true,
+              //     //   label: "",
+              //     //   attributes: {
+              //     //     class: "icon icon-sw",
+              //     //   },
+              //     // },
+              //     {
+              //       id: cmdFullscreen,
+              //       command: cmdFullscreen,
+              //       context: cmdFullscreen,
+              //       togglable: true,
+              //       label: renderToString(<HeroIcons icon="fullscreen" />),
+              //     },
+              //     {
+              //       id: cmdSettings,
+              //       command: cmdSettings,
+              //       context: cmdSettings,
+              //       togglable: true,
+              //       label: renderToString(<HeroIcons text="Preview" />),
+              //     },
+              //   ],
+              // },
+              // {
+              //   id: "top-center-panel",
+              //   el: pnltc.current,
+              //   buttons: [
+              //     {
+              //       label: "",
+              //       id: cmdDeviceDesktop,
+              //       command: cmdDeviceDesktop,
+              //       context: cmdDeviceDesktop,
+              //       active: 1,
+              //       label: renderToString(<HeroIcons icon="pc" />),
+              //     },
+              //     {
+              //       label: ``,
+              //       id: cmdDeviceTablet,
+              //       command: cmdDeviceTablet,
+              //       context: cmdDeviceTablet,
+              //       label: renderToString(<HeroIcons icon="tablet" />),
+              //     },
+              //     {
+              //       label: ``,
+              //       id: cmdDeviceMobile,
+              //       command: cmdDeviceMobile,
+              //       context: cmdDeviceMobile,
+              //       label: renderToString(<HeroIcons icon="mobile" />),
 
-                    // attributes: {
-                    //   title: "Set device width to tablet",
-                    //   class: "icon icon-device-tablet",
-                    // },
-                  },
-                  {
-                    label: ``,
-                    id: cmdDeviceMobile,
-                    command: cmdDeviceMobile,
-                    context: cmdDeviceMobile,
-                    label: renderToString(<HeroIcons icon="mobile" />),
-
-                    // attributes: {
-                    //   title: "Set device width to mobile portrait",
-                    //   class: "icon icon-device-mobile",
-                    // },
-                  },
-                ],
-              },
+              
+              //     },
+              //   ],
+              // },
 
               // {
               //   id: "top-right-panel",

@@ -23,7 +23,7 @@ import {
   cmdToggleLym,
   cmdToggleStym,
   cmdOutlineComp,
-} from "./consts";
+} from "./gjs-preset-funnel/helpers/consts";
 import "./gjs-preset-funnel";
 
 import {

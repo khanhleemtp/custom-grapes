@@ -17,12 +17,14 @@ type HeroIconsProps = {
   text?: string;
   func?: () => void;
   disabled?: boolean;
+  active?:boolean
 };
 const HeroIcons: React.FC<HeroIconsProps> = ({
   icon,
   text,
   func = () => {},
   disabled = false,
+  active=false
 }) => {
   const Icon = useMemo(() => {
     switch (icon) {
@@ -50,16 +52,20 @@ const HeroIcons: React.FC<HeroIconsProps> = ({
   }, [icon]);
 
   return (
-    <button
+    <button    
       className={clsx(
-        "h-full bg-gray-200 px-4 rounded-lg flex items-center space-x-1 hover:bg-gray-100 font-medium",
-        disabled && "bg-gray-100 cursor-not-allowed text-gray-400"
+        "h-full bg-gray-200 rounded-lg flex flex-col hover:bg-gray-100 font-medium",
+        disabled && "bg-gray-100 cursor-not-allowed text-gray-400",
       )}
       onClick={func}
       disabled={disabled}
     >
+    <div className={clsx("flex items-center space-x-1 flex-1 px-4 border-b-2 rounded-lg",{ 'border-blue-400': active})}>
       {Icon && <Icon className="w-6 h-6" />}
       <p className="text-sm">{text}</p>
+    </div>
+    
+      {/* <div className="absolute w-full h-1 right-0 left-0 bottom-0 bg-red-500 rounded-b-lg"></div> */}
     </button>
   );
 };
