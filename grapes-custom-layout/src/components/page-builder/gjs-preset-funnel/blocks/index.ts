@@ -6,6 +6,7 @@ import formBlocks from "./form";
 
 export default (editor, opts) => {
   const config = opts;
+  console.log("opts", opts);
 
   const defaults = {
     columnBlocksOpts: {},

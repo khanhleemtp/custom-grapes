@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { PanelHeading } from "../page-builder/styled";
 import { useRefEditor } from "../sidebar/useEditor";
 import HeroIcons from "./hero-icons.component";
@@ -6,22 +6,43 @@ import HeroIcons from "./hero-icons.component";
 type Props = {};
 
 const Navbar: React.FC<Props> = ({ children }) => {
-  const { pnltl } = useRefEditor();
-  // console.log(useRefEditor());
-  console.log(pnltl);
+  const { pnltl, pnltc, pnlbl, editor } = useRefEditor();
+
+  const changeDevice = () => {
+    editor && editor.setDevice("Desktop");
+  };
+
+  const undo = () => {
+    let cm = editor && editor.Commands;
+    let dv = editor && editor.DeviceManager;
+
+    // console.log("run undo", cm.runCommand("undo"));
+
+    console.log("run undo", cm.getAll());
+    console.log("device desktop", cm.isActive("custom:set-device-desktop"));
+    console.log("getActive", cm.getActive());
+    console.log("device", dv.Device);
+
+    cm.run("core:undo");
+  };
+
   return (
     <div className="divide-y divide-gray-400 bg-white">
       <div className="h-16 border p-2 w-full">
         <div className="flex justify-between items-center w-full h-full">
+          <HeroIcons text="Library" icon="library" disabled={true} />
+          <HeroIcons icon="undo" func={undo} />
+          <HeroIcons icon="pc" func={changeDevice} />
+
           <div className="flex space-x-2 h-full">
-            <HeroIcons text="Library" icon="library" disabled={true} />
-            <HeroIcons icon="undo" />
-            <HeroIcons icon="redo" />
+            {/* <HeroIcons icon="undo" />
+            <HeroIcons icon="redo" /> */}
+            <PanelHeading ref={pnlbl}></PanelHeading>
           </div>
           <div className="flex space-x-2 h-full">
-            <HeroIcons icon="pc" />
-            <HeroIcons icon="tablet" />
-            <HeroIcons icon="mobile" />
+            {/* <HeroIcons icon="tablet" />
+            <HeroIcons icon="mobile" />  */}
+            <PanelHeading ref={pnltc}></PanelHeading>
           </div>
           <div className="h-full">
             <PanelHeading ref={pnltl}></PanelHeading>

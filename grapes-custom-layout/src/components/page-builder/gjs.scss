@@ -12,8 +12,13 @@ $mainLhlColor: rgba(255, 255, 255, 0.7);
 $tagBg: green;
 $secColor: $tagBg;
 @import "grapesjs/src/styles/scss/main.scss";
+.gjs-pn-panel {
+  padding: 0 !important;
+}
 
-
+.gjs-hovered {
+  background-color: red !important;
+}
 
 // .#{$prefix} {
 //   @each $cnum, $ccol in (one, $primaryColor), (two, $secondaryColor), (three, $tertiaryColor), (four, $quaternaryColor) {

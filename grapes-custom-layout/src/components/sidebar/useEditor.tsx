@@ -115,48 +115,56 @@ const useEditor = () => {
           },
           panels: {
             defaults: [
-              // {
-              //   id: "bottom-left-panel",
-              //   el: pnlbl.current,
-              //   buttons: [
-              //     {
-              //       id: cmdUndo,
-              //       context: cmdUndo,
-              //       command: cmdUndo,
-              //       class: "text-gray-400",
-              //       label: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M479.9 394.9c0-19.6 4.2-97.1-56.8-158.7-40.4-40.7-91.9-61.7-163.4-65.5-2.1-.1-3.8-1.9-3.8-4V84c0-3.2-3.5-5.1-6.2-3.4L33.8 222.8c-2.4 1.6-2.4 5.1 0 6.7l215.9 142.2c2.7 1.8 6.2-.1 6.2-3.4v-81.6c0-2.3 1.9-4.1 4.2-4 44.1 1.7 69.5 10.9 97.1 23.2 36.1 16.2 72.9 50.9 94.5 83.5 13.1 19.9 19.2 33.9 21.4 39.7.7 1.7 2.3 2.8 4.1 2.8h2.9c-.1-11.7-.2-26.7-.2-37z"></path></svg>`,
-              //     },
-              //     {
-              //       id: cmdRedo,
-              //       context: cmdRedo,
-              //       command: cmdRedo,
-              //       class: "text-gray-400",
-              //       label: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M9 3.881v-3.881l6 6-6 6v-3.966c-6.98-0.164-6.681 4.747-4.904 7.966-4.386-4.741-3.455-12.337 4.904-12.119z"></path></svg>`,
-              //     },
-              //     {
-              //       id: cmdHistory,
-              //       context: viewContext,
-              //       command: cmdHistory,
-              //       class: "text-gray-400",
-              //       label: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0H24V24H0z"></path><path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12h2c0 4.418 3.582 8 8 8s8-3.582 8-8-3.582-8-8-8C9.25 4 6.824 5.387 5.385 7.5H8v2H2v-6h2V6c1.824-2.43 4.729-4 8-4zm1 5v4.585l3.243 3.243-1.415 1.415L11 12.413V7h2z"></path></g></svg>`,
-              //     },
-              //     {
-              //       id: cmdSettings,
-              //       context: viewContext,
-              //       command: cmdSettings,
-              //       class: "text-gray-400",
-              //       label: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M2.132 13.63a9.942 9.942 0 0 1 0-3.26c1.102.026 2.092-.502 2.477-1.431.385-.93.058-2.004-.74-2.763a9.942 9.942 0 0 1 2.306-2.307c.76.798 1.834 1.125 2.764.74.93-.385 1.457-1.376 1.43-2.477a9.942 9.942 0 0 1 3.262 0c-.027 1.102.501 2.092 1.43 2.477.93.385 2.004.058 2.763-.74a9.942 9.942 0 0 1 2.307 2.306c-.798.76-1.125 1.834-.74 2.764.385.93 1.376 1.457 2.477 1.43a9.942 9.942 0 0 1 0 3.262c-1.102-.027-2.092.501-2.477 1.43-.385.93-.058 2.004.74 2.763a9.942 9.942 0 0 1-2.306 2.307c-.76-.798-1.834-1.125-2.764-.74-.93.385-1.457 1.376-1.43 2.477a9.942 9.942 0 0 1-3.262 0c.027-1.102-.501-2.092-1.43-2.477-.93-.385-2.004-.058-2.763.74a9.942 9.942 0 0 1-2.307-2.306c.798-.76 1.125-1.834.74-2.764-.385-.93-1.376-1.457-2.477-1.43zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path></g></svg>`,
-              //     },
-              //     {
-              //       id: cmdPublish,
-              //       context: cmdPublish,
-              //       command: cmdPublish,
-              //       class: "text-gray-400",
-              //       togglable: false,
-              //       label: `<button style="display: flex; gap:8px; padding: 4px 12px; background:#FF6206; color: white "><span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z"></path></svg></span><span>Publish</span></button>`,
-              //     },
-              //   ],
-              // },
+              {
+                id: "bottom-left-panel",
+                el: pnlbl.current,
+                buttons: [
+                  {
+                    id: cmdUndo,
+                    context: cmdUndo,
+                    command: cmdUndo,
+                    label: renderToString(<HeroIcons icon="undo" />),
+                    // class: "text-gray-400",
+                    // label: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M479.9 394.9c0-19.6 4.2-97.1-56.8-158.7-40.4-40.7-91.9-61.7-163.4-65.5-2.1-.1-3.8-1.9-3.8-4V84c0-3.2-3.5-5.1-6.2-3.4L33.8 222.8c-2.4 1.6-2.4 5.1 0 6.7l215.9 142.2c2.7 1.8 6.2-.1 6.2-3.4v-81.6c0-2.3 1.9-4.1 4.2-4 44.1 1.7 69.5 10.9 97.1 23.2 36.1 16.2 72.9 50.9 94.5 83.5 13.1 19.9 19.2 33.9 21.4 39.7.7 1.7 2.3 2.8 4.1 2.8h2.9c-.1-11.7-.2-26.7-.2-37z"></path></svg>`,
+                  },
+                  {
+                    id: cmdRedo,
+                    context: cmdRedo,
+                    command: cmdRedo,
+                    label: renderToString(
+                      <HeroIcons
+                        icon="redo"
+                        // disabled={editor?.UndoManager?.hasRedo || true}
+                      />
+                    ),
+
+                    // class: "text-gray-400",
+                    // label: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M9 3.881v-3.881l6 6-6 6v-3.966c-6.98-0.164-6.681 4.747-4.904 7.966-4.386-4.741-3.455-12.337 4.904-12.119z"></path></svg>`,
+                  },
+                  // {
+                  //   id: cmdHistory,
+                  //   context: viewContext,
+                  //   command: cmdHistory,
+                  //   class: "text-gray-400",
+                  //   label: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0H24V24H0z"></path><path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12h2c0 4.418 3.582 8 8 8s8-3.582 8-8-3.582-8-8-8C9.25 4 6.824 5.387 5.385 7.5H8v2H2v-6h2V6c1.824-2.43 4.729-4 8-4zm1 5v4.585l3.243 3.243-1.415 1.415L11 12.413V7h2z"></path></g></svg>`,
+                  // },
+                  // {
+                  //   id: cmdSettings,
+                  //   context: viewContext,
+                  //   command: cmdSettings,
+                  //   class: "text-gray-400",
+                  //   label: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M2.132 13.63a9.942 9.942 0 0 1 0-3.26c1.102.026 2.092-.502 2.477-1.431.385-.93.058-2.004-.74-2.763a9.942 9.942 0 0 1 2.306-2.307c.76.798 1.834 1.125 2.764.74.93-.385 1.457-1.376 1.43-2.477a9.942 9.942 0 0 1 3.262 0c-.027 1.102.501 2.092 1.43 2.477.93.385 2.004.058 2.763-.74a9.942 9.942 0 0 1 2.307 2.306c-.798.76-1.125 1.834-.74 2.764.385.93 1.376 1.457 2.477 1.43a9.942 9.942 0 0 1 0 3.262c-1.102-.027-2.092.501-2.477 1.43-.385.93-.058 2.004.74 2.763a9.942 9.942 0 0 1-2.306 2.307c-.76-.798-1.834-1.125-2.764-.74-.93.385-1.457 1.376-1.43 2.477a9.942 9.942 0 0 1-3.262 0c.027-1.102-.501-2.092-1.43-2.477-.93-.385-2.004-.058-2.763.74a9.942 9.942 0 0 1-2.307-2.306c.798-.76 1.125-1.834.74-2.764-.385-.93-1.376-1.457-2.477-1.43zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path></g></svg>`,
+                  // },
+                  // {
+                  //   id: cmdPublish,
+                  //   context: cmdPublish,
+                  //   command: cmdPublish,
+                  //   class: "text-gray-400",
+                  //   togglable: false,
+                  //   label: `<button style="display: flex; gap:8px; padding: 4px 12px; background:#FF6206; color: white "><span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z"></path></svg></span><span>Publish</span></button>`,
+                  // },
+                ],
+              },
               {
                 id: "aside",
                 el: aside.current,
@@ -192,16 +200,16 @@ const useEditor = () => {
                     label: "Styles",
                     togglable: false,
                   },
-                  {
-                    id: cmdToggleLym,
-                    command: cmdToggleLym,
-                    context: viewContext,
-                    label: "Layers",
-                    togglable: false,
-                  },
+                  // {
+                  //   id: cmdToggleLym,
+                  //   command: cmdToggleLym,
+                  //   context: viewContext,
+                  //   label: "Layers",
+                  //   togglable: false,
+                  // },
                 ],
               },
-            
+
               {
                 id: "top-left-panel",
                 el: pnltl.current,
@@ -222,7 +230,7 @@ const useEditor = () => {
                     command: cmdFullscreen,
                     context: cmdFullscreen,
                     togglable: true,
-                    label: renderToString(<HeroIcons icon="history" />),
+                    label: renderToString(<HeroIcons icon="fullscreen" />),
                   },
                   {
                     id: cmdSettings,
@@ -233,7 +241,7 @@ const useEditor = () => {
                   },
                 ],
               },
-              /* {
+              {
                 id: "top-center-panel",
                 el: pnltc.current,
                 buttons: [
@@ -243,33 +251,34 @@ const useEditor = () => {
                     command: cmdDeviceDesktop,
                     context: cmdDeviceDesktop,
                     active: 1,
-                    attributes: {
-                      title: "Set device width to desktop",
-                      class: "icon icon-device-desktop"
-                    }
+                    label: renderToString(<HeroIcons icon="pc" />),
                   },
                   {
                     label: ``,
                     id: cmdDeviceTablet,
                     command: cmdDeviceTablet,
                     context: cmdDeviceTablet,
-                    attributes: {
-                      title: "Set device width to tablet",
-                      class: "icon icon-device-tablet"
-                    }
+                    label: renderToString(<HeroIcons icon="tablet" />),
+
+                    // attributes: {
+                    //   title: "Set device width to tablet",
+                    //   class: "icon icon-device-tablet",
+                    // },
                   },
                   {
                     label: ``,
                     id: cmdDeviceMobile,
                     command: cmdDeviceMobile,
                     context: cmdDeviceMobile,
-                    attributes: {
-                      title: "Set device width to mobile portrait",
-                      class: "icon icon-device-mobile"
-                    }
-                  }
-                ]
-              } */
+                    label: renderToString(<HeroIcons icon="mobile" />),
+
+                    // attributes: {
+                    //   title: "Set device width to mobile portrait",
+                    //   class: "icon icon-device-mobile",
+                    // },
+                  },
+                ],
+              },
 
               // {
               //   id: "top-right-panel",
@@ -376,6 +385,17 @@ const useEditor = () => {
 
       editor.on("block:drag:stop", function (model) {
         editor.select(model);
+        console.log("drag xong cmnr");
+        if (
+          (!openLymBtn || !openLymBtn.get("active")) &&
+          editor.getSelected()
+        ) {
+          openStymBtn && openStymBtn.set("active", 1);
+        }
+      });
+
+      editor.on("component:selected", function (model) {
+        editor.select(model);
 
         if (
           (!openLymBtn || !openLymBtn.get("active")) &&
@@ -384,6 +404,16 @@ const useEditor = () => {
           openStymBtn && openStymBtn.set("active", 1);
         }
       });
+
+      editor.on("update", (page: any) => {
+        console.log("updating");
+      });
+
+      // editor.on("update", function (model) {
+      //   let um = editor.UndoManager;
+      //   console.log("um", um.hasUndo());
+      //   console.log("um", um.hasRedo());
+      // });
     }
   }, [
     canvas,

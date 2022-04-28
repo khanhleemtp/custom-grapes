@@ -9,6 +9,7 @@ import {
   MdOutlineTabletMac,
   MdOutlineSmartphone,
   MdOutlinePreview,
+  MdOutlineFullscreen,
 } from "react-icons/md";
 
 type HeroIconsProps = {
@@ -41,6 +42,8 @@ const HeroIcons: React.FC<HeroIconsProps> = ({
         return MdOutlineHistory;
       case "preview":
         return MdOutlinePreview;
+      case "fullscreen":
+        return MdOutlineFullscreen;
       default:
         return null;
     }

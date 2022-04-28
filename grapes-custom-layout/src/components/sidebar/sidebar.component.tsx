@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { ChevronLeftIcon } from "@heroicons/react/outline";
 import { ChartPieIcon } from "@heroicons/react/solid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../header/navbar.component";
 import SettingTabs from "../tab/tab-group.component";
 
@@ -20,11 +20,11 @@ import {
 } from "../page-builder/styled";
 import { useRefEditor } from "./useEditor";
 
-
 type Props = {};
 
 const Sidebar: React.FC<Props> = ({ children }) => {
   const [isShowing, setIsShowing] = useState(false);
+  const [test, setTest] = useState(new Date());
   // console.log(useRefEditor());
   const { canvas } = useRefEditor();
 
@@ -32,7 +32,7 @@ const Sidebar: React.FC<Props> = ({ children }) => {
     <div
       className={clsx(
         "flex transform transition-all delay-150 duration-200 w-full",
-        isShowing && "-translate-x-72 w-[calc(100%_+_18rem)]"
+        isShowing && "-translate-x-75 w-[calc(100vw_+_18rem)]"
       )}
     >
       <div className="relative min-h-screen max-h-screen">
@@ -48,7 +48,7 @@ const Sidebar: React.FC<Props> = ({ children }) => {
           />
         </div>
 
-        <div className="w-72 min-h-screen max-h-screen overflow-hidden ring-1 ring-gray-400 relative">
+        <div className="w-75 min-h-screen max-h-screen overflow-hidden ring-1 ring-gray-400 relative">
           <div className="divide-y divide-gray-400">
             {/* 1 - Logo & link */}
             <div className="text-blue-500 font-semibold text-xl text-opacity-95 flex items-center space-x-2 p-2 h-16">

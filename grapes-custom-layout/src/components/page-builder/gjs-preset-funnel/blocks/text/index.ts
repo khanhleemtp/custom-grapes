@@ -1,5 +1,10 @@
 // @ts-nocheck
-import { headlineBlock, bulletListBlock, basicTextBlock } from "./blocks";
+import {
+  headlineBlock,
+  bulletListBlock,
+  basicTextBlock,
+  linkBlock,
+} from "./blocks";
 import { toAdd } from "../../helpers";
 
 const defaults = {
@@ -9,11 +14,12 @@ const defaults = {
     "bullet-list-block",
     "text-basic-block",
   ],
-  category: "Text",
+  category: "Text test",
+  // content: "abc",
   // style props
-  useBaseStyle: true,
+  useBaseStyle: false,
   // label props
-  labelText: "Text",
+  labelText: "Text 123",
   labelBulletList: "Bullet list",
   labelHeadline: "Headline",
 };

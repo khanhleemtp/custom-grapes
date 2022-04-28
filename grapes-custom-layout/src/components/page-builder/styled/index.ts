@@ -19,7 +19,7 @@ export const PanelHeading = styled("div")`
   position: relative;
   left: -64px;
   background: rgba(255, 255, 255, 0.53);
-  
+
   &.gjs-pn-panel {
     background-color: transparent;
     padding: 0;
@@ -48,8 +48,7 @@ export const PanelHeading = styled("div")`
         box-shadow: 0 0 1px 1px currentColor;
         background-color: rgba(255, 255, 255, 0.76); */
         color: red;
-      
-        }
+      }
     }
   }
   &:hover {
@@ -97,8 +96,11 @@ export const PanelSection = styled("section")`
   position: relative;
   box-sizing: border-box;
 `;
+
+/* Style block*/
 export const PanelContent = styled("div")`
-  overflow-y: auto;
+  /* overflow-y: auto; */
+  -ms-overflow-style: none;
   display: none;
   /* border: 1px dashed red; */
   min-height: ${maxHeight};
@@ -112,12 +114,12 @@ export const PanelContent = styled("div")`
     border: none;
     .gjs-sm-title {
       border: none;
-      color: rgb(168, 165, 165);
       padding: 0;
     }
   }
+
   .gjs-blocks-cs {
-    padding: 8px;
+    /* padding: 8px; */
     background: transparent;
     .gjs-block {
       box-shadow: none;
@@ -131,13 +133,25 @@ export const PanelContent = styled("div")`
 
     .gjs-block-category {
       border: none;
-      padding: 8px;
+      padding: 16px;
+      border-bottom: 1px solid;
+      border-right: 1px solid;
+      margin-right: 2px;
       .gjs-title {
         background: transparent;
         border: none;
         font-style: normal;
         font-weight: 500;
         padding: 0;
+        color: black;
+        text-transform: uppercase;
+        /* i {
+          display: none;
+        } */
+        /* &::after {
+          content: ">";
+          width: 100%;
+        } */
       }
     }
   }
@@ -252,5 +266,52 @@ export const SearchGroupInput = styled.label`
     border-radius: inherit;
     background: #9a9797;
     padding: 12px;
+  }
+`;
+
+/*  Style Tab */
+export const SwitcherContainer = styled.div`
+  .gjs {
+    &-four-color {
+      color: initial;
+    }
+    &-pn {
+      &-switch-view {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        padding: 0;
+      }
+      &-buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid;
+      }
+      &-btn {
+        flex: 1 1 0;
+        padding: 19px 14px;
+        margin: 0;
+        color: black;
+      }
+      &-active {
+        position: relative;
+        background: transparent;
+        box-shadow: none;
+        &::after {
+          position: absolute;
+          z-index: -1;
+          content: "";
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 3px;
+          background: #2196f3;
+          width: 100%;
+        }
+      }
+    }
   }
 `;
