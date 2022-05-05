@@ -41,6 +41,8 @@ const Sidebar: React.FC<Props> = ({ children }) => {
           className="absolute z-50 bg-white top-1/2 -right-6 w-6 h-14 rounded-r-md flex items-center justify-center cursor-pointer border border-gray-400"
           onClick={() => {
             setIsShowing(!isShowing);
+            console.log(editor.Canvas.getCanvas());
+            editor.Canvas.getWindow();
           }}
         >
           <ChevronLeftIcon
