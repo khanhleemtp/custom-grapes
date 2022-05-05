@@ -11,7 +11,10 @@ const defaultCmdMap = {
 };
 
 const umCmdMap = (um) => ({
-  "custom:undo": () => um.undo(),
+  "custom:undo": () => {
+    um.start();
+    um.undo();
+  },
   "custom:redo": () => um.redo(),
   "custom:start-tracking-change": () => {
     um.start();

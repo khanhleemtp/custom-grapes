@@ -26,19 +26,22 @@ const Sidebar: React.FC<Props> = ({ children }) => {
   const [isShowing, setIsShowing] = useState(false);
   const [test, setTest] = useState(new Date());
   // console.log(useRefEditor());
-  const { canvas } = useRefEditor();
+
+  const { editor, canvas } = useRefEditor();
 
   return (
     <div
       className={clsx(
-        "flex transform transition-all delay-150 duration-200 w-full",
-        isShowing && "-translate-x-75 w-[calc(100vw_+_18rem)]"
+        "relative left-0 flex transform transition-all delay-150 duration-200 w-full",
+        isShowing && "w-[calc(100vw_+_18rem)] -left-[19rem]"
       )}
     >
       <div className="relative min-h-screen max-h-screen">
-        <div
+        {/* <div
           className="absolute z-50 bg-white top-1/2 -right-6 w-6 h-14 rounded-r-md flex items-center justify-center cursor-pointer border border-gray-400"
-          onClick={() => setIsShowing(!isShowing)}
+          onClick={() => {
+            setIsShowing(!isShowing);
+          }}
         >
           <ChevronLeftIcon
             className={clsx(
@@ -46,7 +49,7 @@ const Sidebar: React.FC<Props> = ({ children }) => {
               isShowing && "rotate-180"
             )}
           />
-        </div>
+        </div> */}
 
         <div className="w-75 min-h-screen max-h-screen overflow-hidden ring-1 ring-gray-400 relative">
           <div className="divide-y divide-gray-400">
@@ -67,7 +70,9 @@ const Sidebar: React.FC<Props> = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="flex-1 min-h-screen max-h-screen overflow-y-auto">
+      <div
+        className={clsx("flex-grow min-h-screen max-h-screen overflow-y-auto")}
+      >
         <Navbar>
           <div className="h-full bg-gray-100 p-2">
             <div className="h-[calc(100vh-5.2rem)]">

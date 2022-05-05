@@ -22,6 +22,7 @@ export const cmdToggleBlkm = "custom:toggle-block-manager";
 export const cmdToggleLym = "custom:toggle-layer-manager";
 export const cmdToggleStym = "cutom:toggle-style-manager";
 export const cmdToggleSSOCS = "custom:toggle-show-style-on-component-selected";
+export const cmdToggleTrm = "cutom:toggle-trait-manager";
 
 // Others
 export const cmdCompSelect = "component:selected";

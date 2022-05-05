@@ -5,8 +5,11 @@ import React, {
   useEffect,
   createContext,
   useContext,
+  LegacyRef,
 } from "react";
 import grapesjs from "grapesjs";
+import Basics from "grapesjs-blocks-basic";
+import "../page-builder/gjs-preset-funnel";
 import {
   // cmdImport,
   cmdDeviceDesktop,
@@ -28,6 +31,7 @@ import {
   cmdToggleLym,
   cmdToggleStym,
   cmdOutlineComp,
+  cmdToggleTrm,
 } from "../page-builder/gjs-preset-funnel/helpers/consts";
 import "../page-builder/gjs-preset-funnel";
 import HeroIcons from "../header/hero-icons.component";
@@ -38,11 +42,12 @@ const EditorContext = createContext();
 const useEditor = () => {
   const [GJSConfig, setGJSConfig] = useState(null);
   const [editor, setEditor] = useState(null); //Editor ref
-
+  console.log("hero_icons", renderToString(HeroIcons));
   const canvas = useRef(null); //Canvas ref
   const histm = useRef(null); //Blocks manager panel ref
   const setting = useRef(null); //Blocks manager panel ref
   const blm = useRef(null); //Blocks manager panel ref
+  const trm = useRef(null); // Trait manager panel ref
   const lym = useRef(null); // Layers manager panel ref
   const stylm = useRef(null); // Styles manager panel ref
   // Canvas panel refs
@@ -72,7 +77,9 @@ const useEditor = () => {
           //Configurations for Commands
           commands: {},
           // Configurations for Trait Manager
-          traitManager: {},
+          traitManager: {
+            appendTo: trm.current,
+          },
           // As an alternative we could use: `components: '<h1>Hello World Component!</h1>'`,
           fromElement: 1,
           // Size of the editor
@@ -90,6 +97,7 @@ const useEditor = () => {
           // panels: { defaults: [] },
           selectorManager: {
             appendTo: stylm.current,
+            componentFirst: true,
           },
           styleManager: {
             appendTo: stylm.current,
@@ -137,7 +145,6 @@ const useEditor = () => {
                   //       // disabled={editor?.UndoManager?.hasRedo || true}
                   //     />
                   //   ),
-
                   //   // class: "text-gray-400",
                   //   // label: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M9 3.881v-3.881l6 6-6 6v-3.966c-6.98-0.164-6.681 4.747-4.904 7.966-4.386-4.741-3.455-12.337 4.904-12.119z"></path></svg>`,
                   // },
@@ -165,22 +172,22 @@ const useEditor = () => {
                   // },
                 ],
               },
-              {
-                id: "aside",
-                el: aside.current,
-                // Make the panel resizable
-                resizable: {
-                  maxDim: 300,
-                  minDim: 250,
-                  tc: 0, // Top handler
-                  cl: 0, // Left handler
-                  cr: 1, // Right handler
-                  bc: 0, // Bottom handler
-                  // Being a flex child we need to change `flex-basis` property
-                  // instead of the `width` (default)
-                  keyWidth: "flex-basis",
-                },
-              },
+              // {
+              //   id: "aside",
+              //   el: aside.current,
+              //   // Make the panel resizable
+              //   resizable: {
+              //     maxDim: 300,
+              //     minDim: 250,
+              //     tc: 0, // Top handler
+              //     cl: 0, // Left handler
+              //     cr: 1, // Right handler
+              //     bc: 0, // Bottom handler
+              //     // Being a flex child we need to change `flex-basis` property
+              //     // instead of the `width` (default)
+              //     keyWidth: "flex-basis",
+              //   },
+              // },
               {
                 id: "switch-view",
                 el: switcher.current,
@@ -200,13 +207,20 @@ const useEditor = () => {
                     label: "Styles",
                     togglable: false,
                   },
-                  // {
-                  //   id: cmdToggleLym,
-                  //   command: cmdToggleLym,
-                  //   context: viewContext,
-                  //   label: "Layers",
-                  //   togglable: false,
-                  // },
+                  {
+                    id: cmdToggleLym,
+                    command: cmdToggleLym,
+                    context: viewContext,
+                    label: "Layers",
+                    togglable: false,
+                  },
+                  {
+                    id: cmdToggleTrm,
+                    command: cmdToggleTrm,
+                    context: viewContext,
+                    label: "Traits",
+                    togglable: false,
+                  },
                 ],
               },
 
@@ -267,7 +281,6 @@ const useEditor = () => {
               //       context: cmdDeviceMobile,
               //       label: renderToString(<HeroIcons icon="mobile" />),
 
-              
               //     },
               //   ],
               // },
@@ -298,7 +311,8 @@ const useEditor = () => {
             ],
           },
           showStyleOnSelected: 1,
-          plugins: ["gjs-preset-funnel"],
+          plugins: [Basics, "gjs-preset-funnel"],
+          // plugins: ["gjs-preset-funnel"],
           pluginsOpts: {
             "gjs-preset-funnel": {},
           },
@@ -317,6 +331,7 @@ const useEditor = () => {
       const openBlkmBtn = pnl.getButton("switch-view", cmdToggleBlkm);
       const openLymBtn = pnl.getButton("switch-view", cmdToggleLym);
       const openStymBtn = pnl.getButton("switch-view", cmdToggleStym);
+      const openTrmBtn = pnl.getButton("switch-view", cmdToggleTrm);
 
       editor.on("load", (e) => {
         // Run start tracking changes cmd
@@ -362,6 +377,16 @@ const useEditor = () => {
         },
         stop(editor, sender) {
           stylm.current.style.display = "none";
+        },
+      });
+
+      // Define open style manager cmd
+      editor.Commands.add(cmdToggleTrm, {
+        run(editor, sender) {
+          trm.current.style.display = "block";
+        },
+        stop(editor, sender) {
+          trm.current.style.display = "none";
         },
       });
 
@@ -419,6 +444,7 @@ const useEditor = () => {
     pnltc,
     pnltr,
     editor,
+    trm,
   ]);
   return {
     editor,
@@ -435,6 +461,7 @@ const useEditor = () => {
     pnlbl,
     aside,
     GJSConfig,
+    trm,
   };
 };
 

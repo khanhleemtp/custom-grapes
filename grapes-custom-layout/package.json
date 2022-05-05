@@ -18,6 +18,7 @@
     "clsx": "^1.1.1",
     "esbuild-wasm": "^0.14.38",
     "grapesjs": "^0.18.4",
+    "grapesjs-blocks-basic": "^0.1.8",
     "grapesjs-preset-webpage": "^0.1.11",
     "lodash": "^4.17.21",
     "nanoid": "^3.3.3",
@@ -33,9 +34,11 @@
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
+    "@types/backbone": "^1.4.15",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.2",
     "@vitejs/plugin-react": "^1.3.0",
+    "backbone": "^1.4.1",
     "typescript": "^4.6.3",
     "vite": "^2.9.2"
   }
